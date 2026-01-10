@@ -38,41 +38,37 @@ gray = (r + g + b) / 3
 excess_green = 2*g - r - b
 red_blue_diff = r - b
 veg_balance = g - (r + b) / 2
-sky_emphasis = b - r
+sky_emphasis = 3*b - r-g
 
 # ---------- Normalize results ----------
-gray_n = normalize(gray)
-eg_n = normalize(excess_green)
-rb_n = normalize(red_blue_diff)
-vb_n = normalize(veg_balance)
-sky_n = normalize(sky_emphasis)
+# gray_n = normalize(gray)
+# eg_n = normalize(excess_green)
+# rb_n = normalize(red_blue_diff)
+# vb_n = normalize(veg_balance)
+# sky_n = normalize(sky_emphasis)
 
 # ---------- Plot results ----------
 plt.figure(figsize=(15, 10))
 
 plt.subplot(2, 3, 1)
-plt.imshow(gray_n, cmap='gray')
+plt.imshow(gray, cmap='gray')
 plt.title("(r + g + b) / 3 (Grayscale)")
 plt.axis("off")
 
 plt.subplot(2, 3, 2)
-plt.imshow(eg_n, cmap='gray')
+plt.imshow(excess_green, cmap='gray')
 plt.title("2g - r - b (Excess Green)")
 plt.axis("off")
 
 plt.subplot(2, 3, 3)
-plt.imshow(rb_n, cmap='gray')
+plt.imshow(red_blue_diff, cmap='gray')
 plt.title("r - b (Red - Blue)")
 plt.axis("off")
 
-plt.subplot(2, 3, 4)
-plt.imshow(vb_n, cmap='gray')
-plt.title("g - (r + b) / 2")
-plt.axis("off")
 
 plt.subplot(2, 3, 5)
-plt.imshow(sky_n, cmap='gray')
-plt.title("b - r (Sky Emphasis)")
+plt.imshow(sky_emphasis, cmap='gray')
+plt.title("b - r - g (Sky Emphasis)")
 plt.axis("off")
 
 plt.tight_layout()
